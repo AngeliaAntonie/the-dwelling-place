@@ -5,7 +5,7 @@ import MeditationCard from './components/MeditationCard';
 import MeditationModal from './components/MeditationModal';
 import { supabase, isSupabaseConfigured } from './utils/supabase';
 import { MEDITATIONS, LITURGICAL_SEASONS } from './data/meditations';
-import { Sparkles, BookOpen, User, ShieldCheck, HeartHandshake, Book, Mic } from 'lucide-react';
+import { Sparkles, BookOpen, User, ShieldCheck, HeartHandshake, Book, Mic, Quote } from 'lucide-react';
 
 export default function App() {
   const [adminPortalOpen, setAdminPortalOpen] = useState(false);
@@ -71,8 +71,52 @@ export default function App() {
       <main style={{ flex: 1 }}>
         <HeroSection />
 
+        {/* Generous Gap + Quote Spotlight Section */}
+        <section id="quote-spotlight" style={{
+          padding: '90px 24px 70px',
+          textAlign: 'center',
+          maxWidth: '820px',
+          margin: '0 auto'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            backgroundColor: '#F4EAD3',
+            color: '#B8860B',
+            marginBottom: '20px'
+          }}>
+            <Quote size={20} />
+          </div>
+
+          <p className="font-serif" style={{
+            fontSize: 'clamp(1.35rem, 2.8vw, 1.95rem)',
+            fontStyle: 'italic',
+            color: '#2C2825',
+            lineHeight: 1.6,
+            margin: '0 0 16px 0',
+            fontWeight: 400
+          }}>
+            "Be still, and know that I am God."
+          </p>
+
+          <span style={{
+            fontFamily: "'Century Gothic', sans-serif",
+            fontSize: '0.85rem',
+            color: '#B8860B',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            fontWeight: 600
+          }}>
+            — Psalm 46:10
+          </span>
+        </section>
+
         {/* Content Sections Container */}
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 24px' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '20px 24px 60px' }}>
           
           {/* ================= 1. ABOUT SECTIONS ================= */}
           <section id="the-blog" style={sectionCardStyle}>

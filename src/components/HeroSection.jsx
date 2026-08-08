@@ -7,21 +7,16 @@ export default function HeroSection({ onSelectOption }) {
   const [activeMenu, setActiveMenu] = useState(null);
   const [yearSubmenuOpen, setYearSubmenuOpen] = useState(false);
 
-  // Timer reference for 1-second hover delay before closing
+  // Timer reference for 250ms (quarter-second) hover delay
   const timeoutRef = useRef(null);
 
   const handleMouseEnter = (menuName) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(menuName);
   };
 
   const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    // Keep dropdown visible for 250ms (quarter of a second) after mouse leaves
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
       setYearSubmenuOpen(false);
@@ -98,7 +93,7 @@ export default function HeroSection({ onSelectOption }) {
           </h1>
         </div>
 
-        {/* Bottom Hyperlinks Container with Delay Dropdowns */}
+        {/* Bottom Hyperlinks Container */}
         <div style={{
           position: 'relative',
           zIndex: 50,
