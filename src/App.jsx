@@ -71,11 +71,11 @@ export default function App() {
       <main style={{ flex: 1 }}>
         <HeroSection />
 
-        {/* Generous Gap + Quote Spotlight Section */}
+        {/* Custom Quote Spotlight Section */}
         <section id="quote-spotlight" style={{
           padding: '90px 24px 70px',
           textAlign: 'center',
-          maxWidth: '820px',
+          maxWidth: '860px',
           margin: '0 auto'
         }}>
           <div style={{
@@ -97,22 +97,37 @@ export default function App() {
             fontStyle: 'italic',
             color: '#2C2825',
             lineHeight: 1.6,
-            margin: '0 0 16px 0',
+            margin: '0 0 20px 0',
             fontWeight: 400
           }}>
-            "Be still, and know that I am God."
+            "You have put into my heart a greater joy than they have from abundance of corn and new wine. I will lie down and sleep comes at once for you alone, Lord, make me dwell in safety"
           </p>
 
-          <span style={{
-            fontFamily: "'Century Gothic', sans-serif",
-            fontSize: '0.85rem',
-            color: '#B8860B',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            fontWeight: 600
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+            alignItems: 'center'
           }}>
-            — Psalm 46:10
-          </span>
+            <span style={{
+              fontFamily: "'Century Gothic', sans-serif",
+              fontSize: '0.9rem',
+              color: '#B8860B',
+              letterSpacing: '0.06em',
+              fontWeight: 500
+            }}>
+              Compline, Benedictine night prayer.
+            </span>
+            <span style={{
+              fontFamily: "'Century Gothic', sans-serif",
+              fontSize: '0.85rem',
+              color: '#B8860B',
+              letterSpacing: '0.06em',
+              fontWeight: 400
+            }}>
+              Psalm 4:7-8.
+            </span>
+          </div>
         </section>
 
         {/* Content Sections Container */}
