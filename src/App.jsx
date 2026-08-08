@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import MeditationCard from './components/MeditationCard';
@@ -6,9 +6,11 @@ import MeditationModal from './components/MeditationModal';
 import IntentionsWall from './components/IntentionsWall';
 import NewsletterModal from './components/NewsletterModal';
 import SearchModal from './components/SearchModal';
+import AdminPortal from './components/AdminPortal';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import { MEDITATIONS, LITURGICAL_SEASONS } from './data/meditations';
+import { supabase, isSupabaseConfigured } from './utils/supabase';
 import { Bookmark, Sparkles, Filter, Check, Cross } from 'lucide-react';
 
 export default function App() {
@@ -24,8 +26,59 @@ export default function App() {
 
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [newsletterModalOpen, setNewsletterModalOpen] = useState(false);
+  const [adminPortalOpen, setAdminPortalOpen] = useState(false);
   const [showOnlyBookmarks, setShowOnlyBookmarks] = useState(false);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('ALL');
+
+  // Dynamic posts from Supabase database
+  const [dbPosts, setDbPosts] = useState([]);
+  const [allMeditations, setAllMeditations] = useState(MEDITATIONS);
+
+  // Fetch posts from Supabase if configured
+  const loadSupabasePosts = useCallback(async () => {
+    if (!isSupabaseConfigured()) return;
+    try {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching Supabase posts:', error);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        // Format DB posts to match Meditation interface
+        const formatted = data.map(p => ({
+          id: p.id,
+          title: p.title,
+          subtitle: p.subtitle || '',
+          scripture: p.scripture || '',
+          author: p.author || 'Dwelling Place Contributor',
+          date: p.date,
+          readTime: p.read_time || '5 min read',
+          liturgicalSeason: p.season || 'ORDINARY TIME',
+          featured: Boolean(p.featured),
+          tags: Array.isArray(p.tags) ? p.tags : (p.tags ? [p.tags] : ['Meditation']),
+          image: p.image_url || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+          paragraphs: typeof p.content === 'string' ? p.content.split('\n\n').filter(Boolean) : [p.content],
+          reflectionPrompt: p.reflection_prompt || '',
+          isFromDb: true
+        }));
+
+        setDbPosts(formatted);
+        // Combine DB posts first, then static fallbacks
+        setAllMeditations([...formatted, ...MEDITATIONS]);
+      }
+    } catch (err) {
+      console.error('Failed to load database posts:', err);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadSupabasePosts();
+  }, [loadSupabasePosts]);
 
   // Apply Theme Attribute to HTML root
   useEffect(() => {
@@ -44,10 +97,10 @@ export default function App() {
     );
   };
 
-  const featuredMeditation = MEDITATIONS.find(m => m.featured) || MEDITATIONS[0];
+  const featuredMeditation = allMeditations.find(m => m.featured) || allMeditations[0];
 
   // Filter Meditations
-  const displayedMeditations = MEDITATIONS.filter(m => {
+  const displayedMeditations = allMeditations.filter(m => {
     if (showOnlyBookmarks && !bookmarkedIds.includes(m.id)) return false;
     if (activeCategoryFilter !== 'ALL' && m.liturgicalSeason.toUpperCase() !== activeCategoryFilter) return false;
     return true;
@@ -68,6 +121,7 @@ export default function App() {
         onOpenBookmarks={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
         onOpenNewsletter={() => setNewsletterModalOpen(true)}
         onOpenSearch={() => setSearchModalOpen(true)}
+        onOpenAdmin={() => setAdminPortalOpen(true)}
         currentSeason={LITURGICAL_SEASONS.ORDINARY_TIME}
       />
 
@@ -118,6 +172,19 @@ export default function App() {
                   >
                     <Bookmark size={14} fill={showOnlyBookmarks ? "var(--accent-gold)" : "none"} />
                     <span>{showOnlyBookmarks ? "Showing Saved (" + bookmarkedIds.length + ")" : "Saved Meditations"}</span>
+                  </button>
+
+                  <button
+                    onClick={() => setAdminPortalOpen(true)}
+                    className="btn-outline"
+                    style={{
+                      borderColor: 'var(--accent-gold)',
+                      color: 'var(--accent-gold)',
+                      fontSize: '0.85rem'
+                    }}
+                  >
+                    <Sparkles size={14} />
+                    <span>Writer Portal</span>
                   </button>
                 </div>
               </div>
@@ -218,8 +285,16 @@ export default function App() {
       <SearchModal 
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
-        meditations={MEDITATIONS}
+        meditations={allMeditations}
         onSelectMeditation={(m) => setSelectedMeditation(m)}
+      />
+
+      {/* Writer / Admin Portal Modal */}
+      <AdminPortal 
+        isOpen={adminPortalOpen}
+        onClose={() => setAdminPortalOpen(false)}
+        onPostSaved={loadSupabasePosts}
+        liturgicalSeasons={LITURGICAL_SEASONS}
       />
 
       {/* Footer */}

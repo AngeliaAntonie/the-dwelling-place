@@ -9,6 +9,7 @@ export default function Header({
   onOpenBookmarks, 
   onOpenNewsletter, 
   onOpenSearch,
+  onOpenAdmin,
   currentSeason 
 }) {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -171,6 +172,18 @@ export default function Header({
             )}
           </button>
 
+          {/* Writer Portal Button */}
+          {onOpenAdmin && (
+            <button
+              onClick={onOpenAdmin}
+              className="btn-outline"
+              title="Writer & Admin Portal"
+              style={{ padding: '8px 10px', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
+            >
+              <Sparkles size={16} />
+            </button>
+          )}
+
           {/* Theme Toggle Button (Light/Dark) */}
           <button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -185,3 +198,4 @@ export default function Header({
     </header>
   );
 }
+
