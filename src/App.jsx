@@ -1,13 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import HeroSection from './components/HeroSection';
 import AdminPortal from './components/AdminPortal';
+import MeditationCard from './components/MeditationCard';
+import MeditationModal from './components/MeditationModal';
 import { supabase, isSupabaseConfigured } from './utils/supabase';
 import { MEDITATIONS, LITURGICAL_SEASONS } from './data/meditations';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, BookOpen, User, ShieldCheck, HeartHandshake, Book, Mic } from 'lucide-react';
 
 export default function App() {
   const [adminPortalOpen, setAdminPortalOpen] = useState(false);
   const [allMeditations, setAllMeditations] = useState(MEDITATIONS);
+  const [selectedMeditation, setSelectedMeditation] = useState(null);
+  const [bookmarkedIds, setBookmarkedIds] = useState(() => {
+    const saved = localStorage.getItem('dwelling_place_bookmarks');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   // Fetch posts from Supabase if configured
   const loadSupabasePosts = useCallback(async () => {
@@ -52,12 +59,119 @@ export default function App() {
     loadSupabasePosts();
   }, [loadSupabasePosts]);
 
+  const toggleBookmark = (id) => {
+    setBookmarkedIds(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
-      {/* Main Content — Pure Banner Image (Blank Slate) */}
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F2' }}>
+      {/* Top Banner Image with Interactive Dropdown Navigation */}
       <main style={{ flex: 1 }}>
         <HeroSection />
+
+        {/* Content Sections Container */}
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 24px' }}>
+          
+          {/* ================= 1. ABOUT SECTIONS ================= */}
+          <section id="the-blog" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <BookOpen size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>The Blog</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Welcome to <strong>The Dwelling Place</strong>—a sacred digital sanctuary for monthly meditations, scripture reflections, and quiet prayer. Here, each month offers a space to pause, abide in God's presence, and reflect on timeless Catholic wisdom.
+            </p>
+          </section>
+
+          <section id="the-blogger" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <User size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>The Blogger</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Written and curated with love, each reflection comes from a personal journey of faith, monthly prayer, and devotion.
+            </p>
+          </section>
+
+          <section id="the-patrons" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <ShieldCheck size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>The Patrons</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Dedicated under the heavenly patronage of Our Lady, Seat of Wisdom, and Saint Joseph, protector of the holy home.
+            </p>
+          </section>
+
+          {/* ================= 2. BLOG POSTS ARCHIVE (2026 -> August) ================= */}
+          <section id="blog-2026-august" style={{ ...sectionCardStyle, borderLeft: '4px solid #B8860B' }}>
+            <div style={sectionHeaderStyle}>
+              <Sparkles size={24} style={{ color: '#B8860B' }} />
+              <div>
+                <span style={{ fontSize: '0.8rem', letterSpacing: '0.1em', color: '#B8860B', textTransform: 'uppercase', fontWeight: 600 }}>
+                  2026 Archive
+                </span>
+                <h2 className="font-serif" style={{ ...sectionTitleStyle, margin: 0 }}>August 2026 Meditations</h2>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px', marginTop: '24px' }}>
+              {allMeditations.map(meditation => (
+                <MeditationCard 
+                  key={meditation.id}
+                  meditation={meditation}
+                  onSelect={(m) => setSelectedMeditation(m)}
+                  isBookmarked={bookmarkedIds.includes(meditation.id)}
+                  onToggleBookmark={toggleBookmark}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* ================= 3. RESOURCES SECTIONS ================= */}
+          <section id="rest" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <HeartHandshake size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>Rest</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Guides and quiet reflections on entering Sabbath rest, mental stillness, and resting in the divine presence.
+            </p>
+          </section>
+
+          <section id="books" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <Book size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>Books</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Recommended spiritual reading, monthly book lists, and classic spiritual devotionals.
+            </p>
+          </section>
+
+          <section id="interviews" style={sectionCardStyle}>
+            <div style={sectionHeaderStyle}>
+              <Mic size={24} style={{ color: '#B8860B' }} />
+              <h2 className="font-serif" style={sectionTitleStyle}>Interviews</h2>
+            </div>
+            <p style={{ fontSize: '1.05rem', color: '#4A5568', lineHeight: '1.8' }}>
+              Conversations, audio reflections, and interviews with guest writers and spiritual directors.
+            </p>
+          </section>
+        </div>
       </main>
+
+      {/* Reader Modal */}
+      {selectedMeditation && (
+        <MeditationModal 
+          meditation={selectedMeditation}
+          onClose={() => setSelectedMeditation(null)}
+          isBookmarked={bookmarkedIds.includes(selectedMeditation.id)}
+          onToggleBookmark={toggleBookmark}
+        />
+      )}
 
       {/* Subtle Writer Portal Trigger at bottom corner */}
       <div style={{
@@ -66,7 +180,7 @@ export default function App() {
         justifyContent: 'flex-end',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
-        borderTop: '1px solid #F1F5F9'
+        borderTop: '1px solid #E2E8F0'
       }}>
         <button
           onClick={() => setAdminPortalOpen(true)}
@@ -99,3 +213,26 @@ export default function App() {
     </div>
   );
 }
+
+// Section styling helpers
+const sectionCardStyle = {
+  backgroundColor: '#FFFFFF',
+  borderRadius: '12px',
+  padding: '32px',
+  marginBottom: '32px',
+  border: '1px solid #E6DFD3',
+  boxShadow: '0 4px 16px rgba(44, 40, 37, 0.04)'
+};
+
+const sectionHeaderStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+  marginBottom: '12px'
+};
+
+const sectionTitleStyle = {
+  fontSize: '1.8rem',
+  color: '#1B1816',
+  margin: 0
+};
