@@ -328,3 +328,9 @@ h1, h2, h3, h4 {
   }
 }
 
+.hero-nav-link:hover {
+  border-bottom-color: #F3EEE3 !important;
+  opacity: 0.85;
+}
+
+
