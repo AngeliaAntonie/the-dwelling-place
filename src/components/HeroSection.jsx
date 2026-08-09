@@ -47,7 +47,7 @@ export default function HeroSection({ onSelectOption }) {
 
   return (
     <section style={{ width: '100%', height: '65vh', position: 'relative' }}>
-      {/* Banner Image Container — Positioned to reveal the path and bottom of the image */}
+      {/* Banner Image Container — Balanced framing showing both sky and path */}
       <div style={{
         position: 'relative',
         width: '100%',
@@ -57,7 +57,7 @@ export default function HeroSection({ onSelectOption }) {
         justifyContent: 'space-between',
         backgroundImage: `url(${landingImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center 80%',
+        backgroundPosition: 'center 55%',
         backgroundRepeat: 'no-repeat',
         padding: '24px 7vw 12px'
       }}>
