@@ -65,31 +65,32 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F2' }}>
-      {/* Top Banner Image with Interactive Dropdown Navigation */}
-      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ minHeight: '100vh', height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F2', overflow: 'hidden' }}>
+      {/* Top 68vh: Banner Image with Title & Hyperlinks */}
+      {/* Bottom 32vh: Compact Quote Section */}
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
         <HeroSection />
 
-        {/* Custom Quote Spotlight Section - Stretches to complete initial screen view */}
+        {/* Quote Spotlight Section — 32vh bottom section */}
         <section id="quote-spotlight" style={{
-          flex: 1,
+          height: '32vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '48px 24px 60px',
+          padding: '16px 6vw 16px',
           textAlign: 'center',
-          maxWidth: '920px',
+          maxWidth: '1200px',
           margin: '0 auto',
           width: '100%'
         }}>
           {/* Quote Text */}
           <p className="font-serif" style={{
-            fontSize: 'clamp(1.35rem, 2.8vw, 1.95rem)',
+            fontSize: 'clamp(1.1rem, 2.1vw, 1.65rem)',
             fontStyle: 'italic',
             color: '#2C2825',
-            lineHeight: 1.6,
-            margin: '0 0 20px 0',
+            lineHeight: 1.5,
+            margin: '0 0 12px 0',
             fontWeight: 400
           }}>
             "You have put into my heart a greater joy than they have from abundance of corn and new wine. I will lie down and sleep comes at once for you alone, Lord, make me dwell in safety"
@@ -99,12 +100,12 @@ export default function App() {
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '4px',
+            gap: '2px',
             alignItems: 'center'
           }}>
             <span style={{
               fontFamily: "'Century Gothic', sans-serif",
-              fontSize: '0.9rem',
+              fontSize: '0.85rem',
               color: '#C8524B',
               letterSpacing: '0.06em',
               fontWeight: 500
@@ -113,7 +114,7 @@ export default function App() {
             </span>
             <span style={{
               fontFamily: "'Century Gothic', sans-serif",
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               color: '#C8524B',
               letterSpacing: '0.06em',
               fontWeight: 400
@@ -136,30 +137,30 @@ export default function App() {
 
       {/* Subtle Writer Portal Trigger at bottom corner */}
       <div style={{
-        padding: '16px 24px',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        borderTop: '1px solid #E2E8F0'
+        position: 'fixed',
+        bottom: '12px',
+        right: '16px',
+        zIndex: 100
       }}>
         <button
           onClick={() => setAdminPortalOpen(true)}
           style={{
-            background: 'none',
-            border: 'none',
+            background: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #E2E8F0',
             color: '#94A3B8',
-            fontSize: '0.8rem',
+            fontSize: '0.75rem',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '6px 10px',
-            borderRadius: '6px'
+            padding: '4px 8px',
+            borderRadius: '6px',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
           }}
           title="Writer Portal Login"
         >
-          <Sparkles size={14} />
+          <Sparkles size={13} />
           <span>Writer Portal</span>
         </button>
       </div>

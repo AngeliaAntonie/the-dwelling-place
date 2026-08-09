@@ -7,7 +7,7 @@ export default function HeroSection({ onSelectOption }) {
   const [activeMenu, setActiveMenu] = useState(null);
   const [yearSubmenuOpen, setYearSubmenuOpen] = useState(false);
 
-  // Timer reference for 250ms (quarter-second) hover delay
+  // Timer reference for 250ms hover delay
   const timeoutRef = useRef(null);
 
   const handleMouseEnter = (menuName) => {
@@ -46,26 +46,26 @@ export default function HeroSection({ onSelectOption }) {
   };
 
   return (
-    <section style={{ width: '100%', position: 'relative' }}>
-      {/* Banner Image Container */}
+    <section style={{ width: '100%', height: '65vh', position: 'relative' }}>
+      {/* Banner Image Container — Positioned to reveal the path and bottom of the image */}
       <div style={{
         position: 'relative',
         width: '100%',
-        minHeight: '82vh',
+        height: '65vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundImage: `url(${landingImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 80%',
         backgroundRepeat: 'no-repeat',
-        padding: '36px 8vw 48px'
+        padding: '24px 7vw 12px'
       }}>
         {/* Subtle left & bottom gradient overlay */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.58) 100%)',
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.5) 100%)',
           pointerEvents: 'none'
         }} />
 
@@ -75,17 +75,17 @@ export default function HeroSection({ onSelectOption }) {
           zIndex: 2,
           color: '#F3EEE3',
           textAlign: 'left',
-          marginTop: '8px'
+          marginTop: '6px'
         }}>
           <h1 style={{
             fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
             fontWeight: 300,
-            fontSize: 'clamp(3.5rem, 8.5vw, 6.8rem)',
+            fontSize: 'clamp(2.6rem, 5.8vw, 4.5rem)',
             lineHeight: 1.05,
             letterSpacing: '0.04em',
             margin: 0,
             color: '#F3EEE3',
-            textShadow: '0 2px 12px rgba(0, 0, 0, 0.35)'
+            textShadow: '0 2px 10px rgba(0, 0, 0, 0.35)'
           }}>
             The<br />
             Dwelling<br />
@@ -101,9 +101,8 @@ export default function HeroSection({ onSelectOption }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginTop: '60px',
-          marginBottom: '8px',
-          padding: '0 2vw'
+          marginBottom: '2px',
+          padding: '0 1vw'
         }}>
           {/* ================= 1. ABOUT DROPDOWN ================= */}
           <div 
@@ -118,13 +117,13 @@ export default function HeroSection({ onSelectOption }) {
                 color: '#F3EEE3',
                 textDecoration: 'none',
                 fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
+                fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
                 fontWeight: 300,
-                letterSpacing: '0.14em',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 transition: 'all 0.25s ease',
                 borderBottom: activeMenu === 'about' ? '1px solid #F3EEE3' : '1px solid transparent',
-                paddingBottom: '4px',
+                paddingBottom: '3px',
                 display: 'inline-block',
                 cursor: 'pointer'
               }}
@@ -142,12 +141,12 @@ export default function HeroSection({ onSelectOption }) {
                   position: 'absolute',
                   top: '100%',
                   left: 0,
-                  marginTop: '8px',
+                  marginTop: '6px',
                   backgroundColor: 'rgba(255, 255, 255, 0.98)',
                   backdropFilter: 'blur(16px)',
                   borderRadius: '10px',
-                  padding: '8px 0',
-                  minWidth: '220px',
+                  padding: '6px 0',
+                  minWidth: '200px',
                   boxShadow: '0 16px 36px rgba(0, 0, 0, 0.3)',
                   border: '1px solid rgba(226, 232, 240, 0.9)',
                   zIndex: 1000
@@ -197,13 +196,13 @@ export default function HeroSection({ onSelectOption }) {
                 color: '#F3EEE3',
                 textDecoration: 'none',
                 fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
+                fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
                 fontWeight: 300,
-                letterSpacing: '0.14em',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 transition: 'all 0.25s ease',
                 borderBottom: activeMenu === 'blog-posts' ? '1px solid #F3EEE3' : '1px solid transparent',
-                paddingBottom: '4px',
+                paddingBottom: '3px',
                 display: 'inline-block',
                 cursor: 'pointer'
               }}
@@ -222,12 +221,12 @@ export default function HeroSection({ onSelectOption }) {
                   top: '100%',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  marginTop: '8px',
+                  marginTop: '6px',
                   backgroundColor: 'rgba(255, 255, 255, 0.98)',
                   backdropFilter: 'blur(16px)',
                   borderRadius: '10px',
-                  padding: '8px 0',
-                  minWidth: '200px',
+                  padding: '6px 0',
+                  minWidth: '180px',
                   boxShadow: '0 16px 36px rgba(0, 0, 0, 0.3)',
                   border: '1px solid rgba(226, 232, 240, 0.9)',
                   zIndex: 1000
@@ -252,7 +251,7 @@ export default function HeroSection({ onSelectOption }) {
                     onMouseLeave={handleItemUnhover}
                   >
                     <span>2026</span>
-                    <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>›</span>
+                    <span style={{ fontSize: '0.75rem', opacity: 0.6 }}>›</span>
                   </div>
 
                   {/* Nested Submenu: August */}
@@ -266,7 +265,7 @@ export default function HeroSection({ onSelectOption }) {
                       backdropFilter: 'blur(16px)',
                       borderRadius: '10px',
                       padding: '6px 0',
-                      minWidth: '160px',
+                      minWidth: '140px',
                       boxShadow: '0 16px 36px rgba(0, 0, 0, 0.3)',
                       border: '1px solid rgba(226, 232, 240, 0.9)',
                       zIndex: 1010
@@ -300,13 +299,13 @@ export default function HeroSection({ onSelectOption }) {
                 color: '#F3EEE3',
                 textDecoration: 'none',
                 fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
+                fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
                 fontWeight: 300,
-                letterSpacing: '0.14em',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 transition: 'all 0.25s ease',
                 borderBottom: activeMenu === 'resources' ? '1px solid #F3EEE3' : '1px solid transparent',
-                paddingBottom: '4px',
+                paddingBottom: '3px',
                 display: 'inline-block',
                 cursor: 'pointer'
               }}
@@ -324,12 +323,12 @@ export default function HeroSection({ onSelectOption }) {
                   position: 'absolute',
                   top: '100%',
                   right: 0,
-                  marginTop: '8px',
+                  marginTop: '6px',
                   backgroundColor: 'rgba(255, 255, 255, 0.98)',
                   backdropFilter: 'blur(16px)',
                   borderRadius: '10px',
-                  padding: '8px 0',
-                  minWidth: '220px',
+                  padding: '6px 0',
+                  minWidth: '200px',
                   boxShadow: '0 16px 36px rgba(0, 0, 0, 0.3)',
                   border: '1px solid rgba(226, 232, 240, 0.9)',
                   zIndex: 1000
@@ -374,11 +373,11 @@ export default function HeroSection({ onSelectOption }) {
 // Inline Style Helpers for Dropdown Items
 const dropdownItemStyleWithBorder = {
   display: 'block',
-  padding: '10px 20px',
+  padding: '8px 16px',
   color: '#2C2825',
   textDecoration: 'none',
   fontFamily: "'Century Gothic', sans-serif",
-  fontSize: '0.9rem',
+  fontSize: '0.85rem',
   letterSpacing: '0.04em',
   transition: 'all 0.2s ease',
   borderBottom: '1px solid #F1F5F9'
@@ -386,11 +385,11 @@ const dropdownItemStyleWithBorder = {
 
 const dropdownItemStyleLast = {
   display: 'block',
-  padding: '10px 20px',
+  padding: '8px 16px',
   color: '#2C2825',
   textDecoration: 'none',
   fontFamily: "'Century Gothic', sans-serif",
-  fontSize: '0.9rem',
+  fontSize: '0.85rem',
   letterSpacing: '0.04em',
   transition: 'all 0.2s ease'
 };
