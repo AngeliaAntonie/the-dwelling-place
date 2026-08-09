@@ -47,7 +47,7 @@ export default function HeroSection({ onSelectOption }) {
 
   return (
     <section style={{ width: '100%', height: '65vh', position: 'relative' }}>
-      {/* Banner Image Container — Framed to center 70% to reveal more path at bottom */}
+      {/* Banner Image Container */}
       <div style={{
         position: 'relative',
         width: '100%',
@@ -59,7 +59,7 @@ export default function HeroSection({ onSelectOption }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center 70%',
         backgroundRepeat: 'no-repeat',
-        padding: '24px 7vw 12px'
+        padding: '16px 3.5vw 12px'
       }}>
         {/* Subtle left & bottom gradient overlay */}
         <div style={{
@@ -69,13 +69,13 @@ export default function HeroSection({ onSelectOption }) {
           pointerEvents: 'none'
         }} />
 
-        {/* Title on Left Side */}
+        {/* Title on Top-Left Corner */}
         <div style={{
           position: 'relative',
           zIndex: 2,
           color: '#F3EEE3',
           textAlign: 'left',
-          marginTop: '6px'
+          marginTop: '2px'
         }}>
           <h1 style={{
             fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
