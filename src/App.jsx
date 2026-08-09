@@ -2,11 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react';
 import HeroSection from './components/HeroSection';
 import AdminPortal from './components/AdminPortal';
 import MeditationModal from './components/MeditationModal';
+import AboutPage from './pages/AboutPage';
+import BlogPostsPage from './pages/BlogPostsPage';
+import ResourcesPage from './pages/ResourcesPage';
 import { supabase, isSupabaseConfigured } from './utils/supabase';
 import { MEDITATIONS, LITURGICAL_SEASONS } from './data/meditations';
 import { Sparkles } from 'lucide-react';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'about' | 'blog-posts' | 'resources'
   const [adminPortalOpen, setAdminPortalOpen] = useState(false);
   const [allMeditations, setAllMeditations] = useState(MEDITATIONS);
   const [selectedMeditation, setSelectedMeditation] = useState(null);
@@ -64,16 +68,41 @@ export default function App() {
     );
   };
 
+  const handleNavigate = (pageName) => {
+    setCurrentPage(pageName);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Render Page Based on State
+  if (currentPage === 'about') {
+    return <AboutPage onNavigate={handleNavigate} />;
+  }
+
+  if (currentPage === 'blog-posts') {
+    return (
+      <BlogPostsPage 
+        onNavigate={handleNavigate}
+        allMeditations={allMeditations}
+        bookmarkedIds={bookmarkedIds}
+        toggleBookmark={toggleBookmark}
+      />
+    );
+  }
+
+  if (currentPage === 'resources') {
+    return <ResourcesPage onNavigate={handleNavigate} />;
+  }
+
+  // Home Page
   return (
     <div style={{ minHeight: '100vh', height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAF7F2', overflow: 'hidden' }}>
-      {/* Top 68vh: Banner Image with Title & Hyperlinks */}
-      {/* Bottom 32vh: Compact Quote Section */}
+      {/* Top 65vh: Banner Image with Title & Direct Hyperlinks */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-        <HeroSection />
+        <HeroSection onNavigate={handleNavigate} />
 
-        {/* Quote Spotlight Section — 32vh bottom section */}
+        {/* Quote Spotlight Section — Bottom 35vh section */}
         <section id="quote-spotlight" style={{
-          height: '32vh',
+          height: '35vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
