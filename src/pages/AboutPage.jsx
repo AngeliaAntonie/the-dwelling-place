@@ -18,7 +18,7 @@ export default function AboutPage({ onNavigate }) {
     setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -120; // Account for sticky top navigation header & sticky pill bar
+      const yOffset = -110;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -27,8 +27,8 @@ export default function AboutPage({ onNavigate }) {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-25% 0px -40% 0px',
-      threshold: 0.15
+      rootMargin: '-20% 0px -35% 0px',
+      threshold: 0.2
     };
 
     const handleIntersect = (entries) => {
@@ -109,116 +109,135 @@ export default function AboutPage({ onNavigate }) {
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F2', color: '#2C2825' }}>
       <NavigationHeader currentPage="about" onNavigate={onNavigate} />
 
-      {/* Sticky Pill Navigation Controls */}
+      {/* Elegant Editorial Sub-Navigation */}
       <div style={{
         position: 'sticky',
         top: '60px',
         zIndex: 90,
-        backgroundColor: 'rgba(250, 247, 242, 0.92)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #E6DFD3',
-        padding: '14px 24px',
+        backgroundColor: 'rgba(250, 247, 242, 0.94)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(230, 223, 211, 0.8)',
+        padding: '16px 24px',
         display: 'flex',
         justifyContent: 'center',
-        gap: '12px',
-        boxShadow: '0 4px 12px rgba(44, 40, 37, 0.03)',
-        transition: 'all 0.3s ease'
+        alignItems: 'center',
+        gap: '24px'
       }}>
-        {sections.map(({ id, label }) => {
+        {sections.map(({ id, label }, index) => {
           const isActive = activeSection === id;
           return (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              style={{
-                padding: '10px 24px',
-                borderRadius: '24px',
-                border: '1px solid',
-                borderColor: isActive ? '#C8524B' : '#E6DFD3',
-                backgroundColor: isActive ? '#C8524B' : '#FFFFFF',
-                color: isActive ? '#FFFFFF' : '#2C2825',
-                fontFamily: "'Century Gothic', sans-serif",
-                fontSize: '0.9rem',
-                letterSpacing: '0.06em',
-                fontWeight: 500,
-                cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                transform: isActive ? 'scale(1.03)' : 'scale(1)',
-                boxShadow: isActive ? '0 4px 12px rgba(200, 82, 75, 0.25)' : 'none'
-              }}
-            >
-              {label}
-            </button>
+            <React.Fragment key={id}>
+              {index > 0 && <span style={{ color: '#D5CDBF', fontSize: '0.8rem', userSelect: 'none' }}>•</span>}
+              <button
+                onClick={() => scrollToSection(id)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: "'Century Gothic', sans-serif",
+                  fontSize: '0.92rem',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: isActive ? '#C8524B' : '#6E6862',
+                  fontWeight: isActive ? 600 : 400,
+                  paddingBottom: '4px',
+                  borderBottom: isActive ? '2px solid #C8524B' : '2px solid transparent',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {label}
+              </button>
+            </React.Fragment>
           );
         })}
       </div>
 
-      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <main style={{ maxWidth: '780px', margin: '0 auto', padding: '60px 24px 100px' }}>
         {/* Page Title */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h1 className="font-serif" style={{ fontSize: '3rem', margin: 0, color: '#1B1816' }}>
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <h1 className="font-serif" style={{
+            fontSize: 'clamp(2.8rem, 5vw, 3.8rem)',
+            fontWeight: 300,
+            letterSpacing: '0.02em',
+            margin: 0,
+            color: '#1B1816'
+          }}>
             About
           </h1>
+          <div style={{
+            width: '40px',
+            height: '1px',
+            backgroundColor: '#C8524B',
+            margin: '20px auto 0',
+            opacity: 0.6
+          }} />
         </div>
 
-        {/* Stacked Sections in Scroll View */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-          {sections.map(({ id, label, icon: IconComponent, ref, content }) => {
+        {/* Fluid Editorial Stream */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '72px' }}>
+          {sections.map(({ id, label, icon: IconComponent, ref, content }, index) => {
             const isActive = activeSection === id;
             const isVisible = visibleSections[id];
 
             return (
-              <section
-                key={id}
-                id={id}
-                ref={ref}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '16px',
-                  padding: '40px',
-                  border: '1px solid',
-                  borderColor: isActive ? '#C8524B' : '#E6DFD3',
-                  borderLeft: isActive ? '5px solid #C8524B' : '1px solid #E6DFD3',
-                  boxShadow: isActive
-                    ? '0 8px 30px rgba(200, 82, 75, 0.12)'
-                    : '0 4px 20px rgba(44, 40, 37, 0.04)',
-                  opacity: isVisible ? 1 : 0.35,
-                  transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(28px) scale(0.98)',
-                  transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                  scrollMarginTop: '130px'
-                }}
-              >
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '14px',
-                  marginBottom: '20px'
-                }}>
+              <React.Fragment key={id}>
+                {index > 0 && (
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '50%',
-                    backgroundColor: isActive ? '#F9EDED' : '#FAF7F2',
-                    transition: 'all 0.3s ease'
+                    gap: '16px',
+                    margin: '12px 0'
+                  }}>
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '120px' }} />
+                    <span style={{ color: '#C8524B', fontSize: '0.75rem', opacity: 0.7 }}>❖</span>
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '120px' }} />
+                  </div>
+                )}
+
+                <section
+                  id={id}
+                  ref={ref}
+                  style={{
+                    opacity: isVisible ? 1 : 0.45,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                    transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                    scrollMarginTop: '130px',
+                    paddingLeft: '12px',
+                    borderLeft: isActive ? '2px solid #C8524B' : '2px solid transparent',
+                    transitionProperty: 'opacity, transform, border-color'
+                  }}
+                >
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '20px'
                   }}>
                     <IconComponent
-                      size={26}
+                      size={22}
                       style={{
                         color: '#C8524B',
-                        transform: isActive ? 'scale(1.1)' : 'scale(1)',
-                        transition: 'transform 0.3s ease'
+                        opacity: isActive ? 1 : 0.75,
+                        transition: 'all 0.3s ease'
                       }}
                     />
+                    <h2 className="font-serif" style={{
+                      fontSize: '1.9rem',
+                      fontWeight: 400,
+                      letterSpacing: '0.01em',
+                      margin: 0,
+                      color: '#1B1816'
+                    }}>
+                      {label}
+                    </h2>
                   </div>
-                  <h2 className="font-serif" style={{ fontSize: '2rem', margin: 0, color: '#1B1816' }}>
-                    {label}
-                  </h2>
-                </div>
-                {content}
-              </section>
+                  
+                  <div style={{ paddingLeft: '4px' }}>
+                    {content}
+                  </div>
+                </section>
+              </React.Fragment>
             );
           })}
         </div>
@@ -228,8 +247,10 @@ export default function AboutPage({ onNavigate }) {
 }
 
 const paragraphStyle = {
-  fontSize: '1.1rem',
-  color: '#4A5568',
-  lineHeight: '1.8',
-  marginBottom: '16px'
+  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontSize: '1.3rem',
+  color: '#3A3532',
+  lineHeight: '1.85',
+  marginBottom: '20px',
+  fontWeight: 400
 };
