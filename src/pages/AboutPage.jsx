@@ -7,8 +7,8 @@ export default function AboutPage({ onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [visibleSections, setVisibleSections] = useState({
     'the-blog': true,
-    'the-blogger': false,
-    'the-patrons': false
+    'the-blogger': true,
+    'the-patrons': true
   });
 
   const blogRef = useRef(null);
@@ -176,7 +176,7 @@ export default function AboutPage({ onNavigate }) {
       </div>
 
       {/* Main Content Area — Wider width to fill space gracefully */}
-      <main style={{ maxWidth: '1150px', margin: '0 auto', padding: '50px 4vw 100px' }}>
+      <main style={{ maxWidth: '1150px', margin: '0 auto', padding: '50px 4vw 45vh' }}>
         {/* Page Title */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h1 className="font-serif" style={{
@@ -201,7 +201,6 @@ export default function AboutPage({ onNavigate }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
           {sections.map(({ id, label, icon: IconComponent, ref, content }, index) => {
             const isActive = activeSection === id;
-            const isVisible = visibleSections[id];
 
             return (
               <React.Fragment key={id}>
@@ -223,13 +222,11 @@ export default function AboutPage({ onNavigate }) {
                   id={id}
                   ref={ref}
                   style={{
-                    opacity: isVisible ? 1 : 0.45,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-                    transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                    opacity: 1,
                     scrollMarginTop: '100px',
                     paddingLeft: '24px',
                     borderLeft: isActive ? '4px solid #C8524B' : '4px solid transparent',
-                    transitionProperty: 'opacity, transform, border-color'
+                    transition: 'border-color 0.4s ease, border-width 0.4s ease'
                   }}
                 >
                   <div style={{
