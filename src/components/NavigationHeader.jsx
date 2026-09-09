@@ -32,18 +32,17 @@ export default function NavigationHeader({ currentPage, onNavigate, onOpenAdmin 
             textDecoration: 'none',
             padding: 0
           }}
+          title="Back to Home"
         >
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            color: '#B8860B',
+            color: '#C8524B',
             fontSize: '0.9rem',
             fontWeight: 500,
             fontFamily: "'Century Gothic', sans-serif"
           }}>
-            <ArrowLeft size={16} />
-            <span>Home</span>
+            <ArrowLeft size={18} />
           </div>
           <span style={{ color: '#E2E8F0' }}>|</span>
           <span style={{
@@ -69,9 +68,9 @@ export default function NavigationHeader({ currentPage, onNavigate, onOpenAdmin 
               fontSize: '0.88rem',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: currentPage === 'about' ? '#B8860B' : '#4A5568',
+              color: currentPage === 'about' ? '#C8524B' : '#4A5568',
               fontWeight: currentPage === 'about' ? 600 : 400,
-              borderBottom: currentPage === 'about' ? '2px solid #B8860B' : '2px solid transparent',
+              borderBottom: currentPage === 'about' ? '2px solid #C8524B' : '2px solid transparent',
               paddingBottom: '2px'
             }}
           >
@@ -88,9 +87,9 @@ export default function NavigationHeader({ currentPage, onNavigate, onOpenAdmin 
               fontSize: '0.88rem',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: currentPage === 'blog-posts' ? '#B8860B' : '#4A5568',
+              color: currentPage === 'blog-posts' ? '#C8524B' : '#4A5568',
               fontWeight: currentPage === 'blog-posts' ? 600 : 400,
-              borderBottom: currentPage === 'blog-posts' ? '2px solid #B8860B' : '2px solid transparent',
+              borderBottom: currentPage === 'blog-posts' ? '2px solid #C8524B' : '2px solid transparent',
               paddingBottom: '2px'
             }}
           >

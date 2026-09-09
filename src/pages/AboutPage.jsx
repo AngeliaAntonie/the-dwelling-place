@@ -35,8 +35,8 @@ export default function AboutPage({ onNavigate }) {
               padding: '10px 24px',
               borderRadius: '24px',
               border: '1px solid',
-              borderColor: activeTab === 'the-blog' ? '#B8860B' : '#E6DFD3',
-              backgroundColor: activeTab === 'the-blog' ? '#B8860B' : '#FFFFFF',
+              borderColor: activeTab === 'the-blog' ? '#C8524B' : '#E6DFD3',
+              backgroundColor: activeTab === 'the-blog' ? '#C8524B' : '#FFFFFF',
               color: activeTab === 'the-blog' ? '#FFFFFF' : '#2C2825',
               fontFamily: "'Century Gothic', sans-serif",
               fontSize: '0.9rem',
@@ -55,8 +55,8 @@ export default function AboutPage({ onNavigate }) {
               padding: '10px 24px',
               borderRadius: '24px',
               border: '1px solid',
-              borderColor: activeTab === 'the-blogger' ? '#B8860B' : '#E6DFD3',
-              backgroundColor: activeTab === 'the-blogger' ? '#B8860B' : '#FFFFFF',
+              borderColor: activeTab === 'the-blogger' ? '#C8524B' : '#E6DFD3',
+              backgroundColor: activeTab === 'the-blogger' ? '#C8524B' : '#FFFFFF',
               color: activeTab === 'the-blogger' ? '#FFFFFF' : '#2C2825',
               fontFamily: "'Century Gothic', sans-serif",
               fontSize: '0.9rem',
@@ -75,8 +75,8 @@ export default function AboutPage({ onNavigate }) {
               padding: '10px 24px',
               borderRadius: '24px',
               border: '1px solid',
-              borderColor: activeTab === 'the-patrons' ? '#B8860B' : '#E6DFD3',
-              backgroundColor: activeTab === 'the-patrons' ? '#B8860B' : '#FFFFFF',
+              borderColor: activeTab === 'the-patrons' ? '#C8524B' : '#E6DFD3',
+              backgroundColor: activeTab === 'the-patrons' ? '#C8524B' : '#FFFFFF',
               color: activeTab === 'the-patrons' ? '#FFFFFF' : '#2C2825',
               fontFamily: "'Century Gothic', sans-serif",
               fontSize: '0.9rem',
@@ -94,7 +94,7 @@ export default function AboutPage({ onNavigate }) {
         {activeTab === 'the-blog' && (
           <div style={cardContentStyle}>
             <div style={iconHeaderStyle}>
-              <BookOpen size={28} style={{ color: '#B8860B' }} />
+              <BookOpen size={28} style={{ color: '#C8524B' }} />
               <h2 className="font-serif" style={cardTitleStyle}>The Blog</h2>
             </div>
             <p style={paragraphStyle}>
@@ -109,7 +109,7 @@ export default function AboutPage({ onNavigate }) {
         {activeTab === 'the-blogger' && (
           <div style={cardContentStyle}>
             <div style={iconHeaderStyle}>
-              <User size={28} style={{ color: '#B8860B' }} />
+              <User size={28} style={{ color: '#C8524B' }} />
               <h2 className="font-serif" style={cardTitleStyle}>The Blogger</h2>
             </div>
             <p style={paragraphStyle}>
@@ -124,7 +124,7 @@ export default function AboutPage({ onNavigate }) {
         {activeTab === 'the-patrons' && (
           <div style={cardContentStyle}>
             <div style={iconHeaderStyle}>
-              <ShieldCheck size={28} style={{ color: '#B8860B' }} />
+              <ShieldCheck size={28} style={{ color: '#C8524B' }} />
               <h2 className="font-serif" style={cardTitleStyle}>The Patrons</h2>
             </div>
             <p style={paragraphStyle}>
