@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NavigationHeader from '../components/NavigationHeader';
-import { BookOpen, User, ShieldCheck } from 'lucide-react';
 
 export default function AboutPage({ onNavigate }) {
   const [activeSection, setActiveSection] = useState('the-blog');
@@ -43,7 +42,6 @@ export default function AboutPage({ onNavigate }) {
     {
       id: 'the-blog',
       label: 'The Blog',
-      icon: BookOpen,
       ref: blogRef,
       content: (
         <>
@@ -59,7 +57,6 @@ export default function AboutPage({ onNavigate }) {
     {
       id: 'the-blogger',
       label: 'The Blogger',
-      icon: User,
       ref: bloggerRef,
       content: (
         <>
@@ -75,7 +72,6 @@ export default function AboutPage({ onNavigate }) {
     {
       id: 'the-patrons',
       label: 'The Patrons',
-      icon: ShieldCheck,
       ref: patronsRef,
       content: (
         <>
@@ -119,7 +115,7 @@ export default function AboutPage({ onNavigate }) {
 
         {/* Fluid Editorial Stream */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
-          {sections.map(({ id, label, icon: IconComponent, ref, content }, index) => {
+          {sections.map(({ id, label, ref, content }, index) => {
             const isActive = activeSection === id;
 
             return (
@@ -149,21 +145,7 @@ export default function AboutPage({ onNavigate }) {
                     transition: 'border-color 0.4s ease'
                   }}
                 >
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '20px'
-                  }}>
-                    <IconComponent
-                      size={24}
-                      style={{
-                        color: '#C8524B',
-                        opacity: isActive ? 1 : 0.7,
-                        transform: isActive ? 'scale(1.05)' : 'scale(1)',
-                        transition: 'all 0.3s ease'
-                      }}
-                    />
+                  <div style={{ marginBottom: '20px' }}>
                     <h2 className="font-serif" style={{
                       fontSize: '2.1rem',
                       fontWeight: 400,
