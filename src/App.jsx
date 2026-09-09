@@ -117,7 +117,7 @@ export default function App() {
           <p className="font-serif" style={{
             fontSize: 'clamp(1.1rem, 2.1vw, 1.65rem)',
             fontStyle: 'italic',
-            color: '#2C2825',
+            color: '#2D543B',
             lineHeight: 1.5,
             margin: '0 0 12px 0',
             fontWeight: 400
@@ -125,7 +125,7 @@ export default function App() {
             "You have put into my heart a greater joy than they have from abundance of corn and new wine. I will lie down in peace and sleep comes at once for you alone, Lord, make me dwell in safety"
           </p>
 
-          {/* Reference in Sunset Light Red */}
+          {/* Reference in Black */}
           <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -135,7 +135,7 @@ export default function App() {
             <span style={{
               fontFamily: "'Century Gothic', sans-serif",
               fontSize: '0.85rem',
-              color: '#C8524B',
+              color: '#1A1A1A',
               letterSpacing: '0.06em',
               fontWeight: 500
             }}>
@@ -144,7 +144,7 @@ export default function App() {
             <span style={{
               fontFamily: "'Century Gothic', sans-serif",
               fontSize: '0.8rem',
-              color: '#C8524B',
+              color: '#1A1A1A',
               letterSpacing: '0.06em',
               fontWeight: 400
             }}>
