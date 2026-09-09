@@ -122,7 +122,7 @@ export default function App() {
             margin: '0 0 12px 0',
             fontWeight: 400
           }}>
-            "You have put into my heart a greater joy than they have from abundance of corn and new wine. I will lie down and sleep comes at once for you alone, Lord, make me dwell in safety"
+            "You have put into my heart a greater joy than they have from abundance of corn and new wine. I will lie down in peace and sleep comes at once for you alone, Lord, make me dwell in safety"
           </p>
 
           {/* Reference in Sunset Light Red */}
