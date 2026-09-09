@@ -96,25 +96,6 @@ export default function NavigationHeader({ currentPage, onNavigate, onOpenAdmin 
           >
             Blog Posts
           </button>
-
-          <button
-            onClick={() => onNavigate('resources')}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              fontFamily: "'Century Gothic', sans-serif",
-              fontSize: '0.88rem',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: currentPage === 'resources' ? '#B8860B' : '#4A5568',
-              fontWeight: currentPage === 'resources' ? 600 : 400,
-              borderBottom: currentPage === 'resources' ? '2px solid #B8860B' : '2px solid transparent',
-              paddingBottom: '2px'
-            }}
-          >
-            Resources
-          </button>
         </div>
       </div>
     </header>

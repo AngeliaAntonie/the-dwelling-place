@@ -114,29 +114,6 @@ export default function HeroSection({ onNavigate }) {
           >
             Blog Posts
           </a>
-
-          {/* RESOURCES PAGE LINK */}
-          <a
-            href="#resources"
-            onClick={(e) => handleNavClick(e, 'resources')}
-            style={{
-              color: '#F3EEE3',
-              textDecoration: 'none',
-              fontFamily: "'Century Gothic', 'Cormorant Garamond', Georgia, serif",
-              fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
-              fontWeight: 300,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              transition: 'all 0.25s ease',
-              borderBottom: '1px solid transparent',
-              paddingBottom: '3px',
-              display: 'inline-block',
-              cursor: 'pointer'
-            }}
-            className="hero-nav-link"
-          >
-            Resources
-          </a>
         </div>
       </div>
     </section>
