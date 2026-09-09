@@ -8,7 +8,7 @@ export default function AboutPage({ onNavigate }) {
   const bloggerRef = useRef(null);
   const patronsRef = useRef(null);
 
-  // IntersectionObserver to dynamically highlight active section's red left border
+  // IntersectionObserver to dynamically highlight active section's centered accent line
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -91,8 +91,8 @@ export default function AboutPage({ onNavigate }) {
       {/* Main Navigation Header */}
       <NavigationHeader currentPage="about" onNavigate={onNavigate} />
 
-      {/* Main Content Stream */}
-      <main style={{ maxWidth: '1150px', margin: '0 auto', padding: '60px 4vw 40vh' }}>
+      {/* Centered Main Content Stream */}
+      <main style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 4vw 40vh', textAlign: 'center' }}>
         {/* Page Title */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h1 className="font-serif" style={{
@@ -113,7 +113,7 @@ export default function AboutPage({ onNavigate }) {
           }} />
         </div>
 
-        {/* Fluid Editorial Stream */}
+        {/* Centered Editorial Stream */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
           {sections.map(({ id, label, ref, content }, index) => {
             const isActive = activeSection === id;
@@ -126,11 +126,11 @@ export default function AboutPage({ onNavigate }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '16px',
-                    margin: '8px 0'
+                    margin: '12px 0'
                   }}>
-                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '200px' }} />
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '160px' }} />
                     <span style={{ color: '#C8524B', fontSize: '0.75rem', opacity: 0.7 }}>❖</span>
-                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '200px' }} />
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '160px' }} />
                   </div>
                 )}
 
@@ -138,16 +138,14 @@ export default function AboutPage({ onNavigate }) {
                   id={id}
                   ref={ref}
                   style={{
-                    opacity: 1,
                     scrollMarginTop: '80px',
-                    paddingLeft: '24px',
-                    borderLeft: isActive ? '4px solid #C8524B' : '4px solid transparent',
-                    transition: 'border-color 0.4s ease'
+                    textAlign: 'center'
                   }}
                 >
-                  <div style={{ marginBottom: '20px' }}>
+                  {/* Section Title & Centered Dynamic Accent Line */}
+                  <div style={{ textAlign: 'center', marginBottom: '24px' }}>
                     <h2 className="font-serif" style={{
-                      fontSize: '2.1rem',
+                      fontSize: '2.2rem',
                       fontWeight: 400,
                       letterSpacing: '0.01em',
                       margin: 0,
@@ -155,6 +153,17 @@ export default function AboutPage({ onNavigate }) {
                     }}>
                       {label}
                     </h2>
+                    
+                    {/* Centered Dynamic Red Accent Line */}
+                    <div style={{
+                      width: '48px',
+                      height: '2px',
+                      backgroundColor: '#C8524B',
+                      margin: '12px auto 0',
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scaleX(1)' : 'scaleX(0.3)',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                    }} />
                   </div>
                   
                   <div>
@@ -176,5 +185,6 @@ const paragraphStyle = {
   color: '#3A3532',
   lineHeight: '1.85',
   marginBottom: '20px',
-  fontWeight: 400
+  fontWeight: 400,
+  textAlign: 'center'
 };
