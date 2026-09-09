@@ -92,29 +92,43 @@ export default function AboutPage({ onNavigate }) {
       <NavigationHeader currentPage="about" onNavigate={onNavigate} />
 
       {/* Centered Main Content Stream */}
-      <main style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 4vw 40vh', textAlign: 'center' }}>
-        {/* Page Title */}
-        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+      <main style={{ maxWidth: '850px', margin: '0 auto', padding: '64px 4vw 40vh', textAlign: 'center' }}>
+        {/* Main Hero Page Title — Distinct & Commanding */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <span style={{
+            fontFamily: "'Century Gothic', sans-serif",
+            fontSize: '0.82rem',
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#C8524B',
+            fontWeight: 600,
+            display: 'block',
+            marginBottom: '12px'
+          }}>
+            SANCTUARY & DEVOTION
+          </span>
           <h1 className="font-serif" style={{
-            fontSize: 'clamp(2.8rem, 5vw, 3.8rem)',
+            fontSize: 'clamp(3.4rem, 6.5vw, 4.8rem)',
             fontWeight: 300,
-            letterSpacing: '0.02em',
+            letterSpacing: '0.06em',
+            lineHeight: 1.05,
             margin: 0,
             color: '#1B1816'
           }}>
             About
           </h1>
           <div style={{
-            width: '40px',
-            height: '1px',
+            width: '80px',
+            height: '2px',
             backgroundColor: '#C8524B',
-            margin: '20px auto 0',
-            opacity: 0.6
+            margin: '24px auto 0',
+            borderRadius: '2px',
+            opacity: 0.85
           }} />
         </div>
 
         {/* Centered Editorial Stream */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '72px' }}>
           {sections.map(({ id, label, ref, content }, index) => {
             const isActive = activeSection === id;
 
@@ -126,11 +140,11 @@ export default function AboutPage({ onNavigate }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '16px',
-                    margin: '12px 0'
+                    margin: '16px 0'
                   }}>
-                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '160px' }} />
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '180px' }} />
                     <span style={{ color: '#C8524B', fontSize: '0.75rem', opacity: 0.7 }}>❖</span>
-                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '160px' }} />
+                    <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '180px' }} />
                   </div>
                 )}
 
@@ -142,27 +156,34 @@ export default function AboutPage({ onNavigate }) {
                     textAlign: 'center'
                   }}
                 >
-                  {/* Section Title & Centered Dynamic Accent Line */}
-                  <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  {/* Section Title & Wider Dynamic Red Accent Underline */}
+                  <div style={{
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    marginBottom: '24px'
+                  }}>
                     <h2 className="font-serif" style={{
-                      fontSize: '2.2rem',
+                      fontSize: '2.1rem',
                       fontWeight: 400,
-                      letterSpacing: '0.01em',
+                      letterSpacing: '0.02em',
                       margin: 0,
                       color: '#1B1816'
                     }}>
                       {label}
                     </h2>
                     
-                    {/* Centered Dynamic Red Accent Line */}
+                    {/* Dynamic Red Accent Line — Spans across phrase */}
                     <div style={{
-                      width: '48px',
+                      width: '100%',
+                      minWidth: '160px',
                       height: '2px',
                       backgroundColor: '#C8524B',
-                      margin: '12px auto 0',
+                      margin: '10px auto 0',
+                      borderRadius: '1px',
                       opacity: isActive ? 1 : 0,
-                      transform: isActive ? 'scaleX(1)' : 'scaleX(0.3)',
-                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                      transform: isActive ? 'scaleX(1)' : 'scaleX(0.15)',
+                      transformOrigin: 'center center',
+                      transition: 'all 0.45s cubic-bezier(0.16, 1, 0.3, 1)'
                     }} />
                   </div>
                   
