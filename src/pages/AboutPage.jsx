@@ -81,6 +81,130 @@ export default function AboutPage({ onNavigate }) {
           <p style={paragraphStyle}>
             May their intercession bring peace, quiet faith, and spiritual strength to all who visit this dwelling place.
           </p>
+
+          {/* Three Oval Patron Frames */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '32px',
+            marginTop: '44px',
+            flexWrap: 'wrap'
+          }}>
+            {/* Our Lady Mystical Rose */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '160px'
+            }}>
+              <div style={{
+                width: '140px',
+                height: '185px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '3px solid #C8524B',
+                boxShadow: '0 0 0 3px #FAF7F2, 0 0 0 5px rgba(200, 82, 75, 0.35), 0 8px 24px rgba(44, 40, 37, 0.1)',
+                backgroundColor: '#F3ECE2'
+              }}>
+                <img
+                  src="/images/our_lady_mystical_rose.jpg"
+                  alt="Our Lady Mystical Rose"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                color: '#1B1816',
+                marginTop: '14px',
+                textAlign: 'center',
+                lineHeight: 1.25
+              }}>
+                Our Lady<br />
+                <span style={{ fontSize: '0.95rem', fontWeight: 400, fontStyle: 'italic', color: '#6E6862' }}>
+                  Mystical Rose
+                </span>
+              </span>
+            </div>
+
+            {/* Saint Bernadette Soubirous */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '160px'
+            }}>
+              <div style={{
+                width: '140px',
+                height: '185px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '3px solid #C8524B',
+                boxShadow: '0 0 0 3px #FAF7F2, 0 0 0 5px rgba(200, 82, 75, 0.35), 0 8px 24px rgba(44, 40, 37, 0.1)',
+                backgroundColor: '#F3ECE2'
+              }}>
+                <img
+                  src="/images/st_bernadette.jpg"
+                  alt="St. Bernadette Soubirous"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                color: '#1B1816',
+                marginTop: '14px',
+                textAlign: 'center',
+                lineHeight: 1.25
+              }}>
+                St. Bernadette<br />
+                <span style={{ fontSize: '0.95rem', fontWeight: 400, fontStyle: 'italic', color: '#6E6862' }}>
+                  Soubirous
+                </span>
+              </span>
+            </div>
+
+            {/* Saint Josemaría Escrivá */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '160px'
+            }}>
+              <div style={{
+                width: '140px',
+                height: '185px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '3px solid #C8524B',
+                boxShadow: '0 0 0 3px #FAF7F2, 0 0 0 5px rgba(200, 82, 75, 0.35), 0 8px 24px rgba(44, 40, 37, 0.1)',
+                backgroundColor: '#F3ECE2'
+              }}>
+                <img
+                  src="/images/st_josemaria_escriva.jpg"
+                  alt="St. Josemaría Escrivá"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                color: '#1B1816',
+                marginTop: '14px',
+                textAlign: 'center',
+                lineHeight: 1.25
+              }}>
+                St. Josemaría<br />
+                <span style={{ fontSize: '0.95rem', fontWeight: 400, fontStyle: 'italic', color: '#6E6862' }}>
+                  Escrivá
+                </span>
+              </span>
+            </div>
+          </div>
         </>
       )
     }
