@@ -96,16 +96,16 @@ export default function AboutPage({ onNavigate }) {
         {/* Main Hero Page Title — Distinct & Commanding */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <span style={{
-            fontFamily: "'Century Gothic', sans-serif",
-            fontSize: '0.82rem',
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize: '1.25rem',
+            fontStyle: 'italic',
+            letterSpacing: '0.02em',
             color: '#C8524B',
-            fontWeight: 600,
+            fontWeight: 500,
             display: 'block',
             marginBottom: '12px'
           }}>
-            SANCTUARY & DEVOTION
+            So funny the Holy Spirit lead you here :)
           </span>
           <h1 className="font-serif" style={{
             fontSize: 'clamp(3.4rem, 6.5vw, 4.8rem)',
