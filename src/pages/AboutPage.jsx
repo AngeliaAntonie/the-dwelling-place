@@ -4,42 +4,12 @@ import { BookOpen, User, ShieldCheck } from 'lucide-react';
 
 export default function AboutPage({ onNavigate }) {
   const [activeSection, setActiveSection] = useState('the-blog');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [visibleSections, setVisibleSections] = useState({
-    'the-blog': true,
-    'the-blogger': true,
-    'the-patrons': true
-  });
 
   const blogRef = useRef(null);
   const bloggerRef = useRef(null);
   const patronsRef = useRef(null);
 
-  const scrollToSection = (id) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
-  // Scroll listener for hiding sub-nav bar on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 60) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // IntersectionObserver for active section detection
+  // IntersectionObserver to dynamically highlight active section's red left border
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -51,7 +21,6 @@ export default function AboutPage({ onNavigate }) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
-          setVisibleSections((prev) => ({ ...prev, [entry.target.id]: true }));
         }
       });
     };
@@ -123,62 +92,13 @@ export default function AboutPage({ onNavigate }) {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F2', color: '#2C2825' }}>
-      {/* Top Header Navigation — Stays Pinned */}
+      {/* Main Navigation Header */}
       <NavigationHeader currentPage="about" onNavigate={onNavigate} />
 
-      {/* Sub-Navigation Bar — Hides smoothly when user scrolls down */}
-      <div style={{
-        position: 'sticky',
-        top: '60px',
-        zIndex: 90,
-        backgroundColor: 'rgba(250, 247, 242, 0.96)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(230, 223, 211, 0.8)',
-        padding: isScrolled ? '0px 24px' : '14px 24px',
-        maxHeight: isScrolled ? '0px' : '60px',
-        opacity: isScrolled ? 0 : 1,
-        transform: isScrolled ? 'translateY(-100%)' : 'translateY(0)',
-        pointerEvents: isScrolled ? 'none' : 'auto',
-        overflow: 'hidden',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '24px',
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
-      }}>
-        {sections.map(({ id, label }, index) => {
-          const isActive = activeSection === id;
-          return (
-            <React.Fragment key={id}>
-              {index > 0 && <span style={{ color: '#D5CDBF', fontSize: '0.8rem', userSelect: 'none' }}>•</span>}
-              <button
-                onClick={() => scrollToSection(id)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: "'Century Gothic', sans-serif",
-                  fontSize: '0.92rem',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: isActive ? '#C8524B' : '#6E6862',
-                  fontWeight: isActive ? 600 : 400,
-                  paddingBottom: '4px',
-                  borderBottom: isActive ? '2px solid #C8524B' : '2px solid transparent',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                {label}
-              </button>
-            </React.Fragment>
-          );
-        })}
-      </div>
-
-      {/* Main Content Area — Wider width to fill space gracefully */}
-      <main style={{ maxWidth: '1150px', margin: '0 auto', padding: '50px 4vw 45vh' }}>
+      {/* Main Content Stream */}
+      <main style={{ maxWidth: '1150px', margin: '0 auto', padding: '60px 4vw 40vh' }}>
         {/* Page Title */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h1 className="font-serif" style={{
             fontSize: 'clamp(2.8rem, 5vw, 3.8rem)',
             fontWeight: 300,
@@ -223,10 +143,10 @@ export default function AboutPage({ onNavigate }) {
                   ref={ref}
                   style={{
                     opacity: 1,
-                    scrollMarginTop: '100px',
+                    scrollMarginTop: '80px',
                     paddingLeft: '24px',
                     borderLeft: isActive ? '4px solid #C8524B' : '4px solid transparent',
-                    transition: 'border-color 0.4s ease, border-width 0.4s ease'
+                    transition: 'border-color 0.4s ease'
                   }}
                 >
                   <div style={{
