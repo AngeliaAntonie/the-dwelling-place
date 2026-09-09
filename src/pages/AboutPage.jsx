@@ -12,12 +12,9 @@ export default function AboutPage({ onNavigate }) {
       <main style={{ maxWidth: '960px', margin: '0 auto', padding: '60px 24px' }}>
         {/* Page Title */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 className="font-serif" style={{ fontSize: '3rem', margin: '0 0 12px 0', color: '#1B1816' }}>
+          <h1 className="font-serif" style={{ fontSize: '3rem', margin: 0, color: '#1B1816' }}>
             About
           </h1>
-          <p style={{ fontFamily: "'Century Gothic', sans-serif", color: '#6E6862', fontSize: '1rem', letterSpacing: '0.04em' }}>
-            Discover the heart, writer, and patrons behind The Dwelling Place
-          </p>
         </div>
 
         {/* Tab Navigation Controls */}
