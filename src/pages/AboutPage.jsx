@@ -46,10 +46,7 @@ export default function AboutPage({ onNavigate }) {
       content: (
         <>
           <p style={paragraphStyle}>
-            Welcome to <strong>The Dwelling Place</strong>—a sacred digital sanctuary for monthly meditations, scripture reflections, and quiet prayer.
-          </p>
-          <p style={paragraphStyle}>
-            Here, each month offers a space to pause, abide in God's presence, and reflect on timeless Catholic wisdom and spiritual rest.
+            My Friend told me to start a blog a couple of years ago and my instant reaction was to laugh it off as I thought to myself, ‘I don’t even know the capitals of most countries and I really don’t like cheese, why would anyone care or trust what I have to say about God and the Catholic Church…’ This Friend of mine was persistent and slowly revealed to me that it is precisely because of my inadequacies, not in spite of them, that He thinks I should start a blog. In doing this blog, I picture myself saying with the Blessed Virgin Mary (though I am sure not so resolutely as Mary), ‘Here I am, the servant of the Lord’ (Lk 1:38). My prayer for you, if you’re reading this and read even one of my posts, is that you come to realise that the Friend who called me to do this, the lovely and beautiful Jesus, is calling you too right now into a relationship with Him. I am aware that this may be a relationship for you that is non existent, a bit marred or even a daunting prospect. May this blog serve as a place that you can dwell with me and hear just how awesome the Lord is once you open yourself to His amazing grace!
           </p>
         </>
       )
@@ -61,25 +58,40 @@ export default function AboutPage({ onNavigate }) {
       content: (
         <>
           <p style={paragraphStyle}>
-            Written and curated with love, each reflection comes from a personal journey of faith, monthly prayer, and devotion.
-          </p>
-          <p style={paragraphStyle}>
-            Through monthly written reflections, this site is designed to offer encouragement and spiritual quiet in a fast-paced world.
+            I’m a young woman in my early twenties who has been captivated by the love of Jesus, just can’t help it! I grew up in England and lived and went to school there until university. I have studied my undergrad in South Africa at the University of Cape Town, in Law and Philosophy and soon I’ll be starting a Masters in Theological studies. But in all honesty God only knows what’s truly popping in my life (thank you Beach Boys for the most relatable line). I have a deep curiosity and wonder for philosophy and pondering God’s Goodness, Truth and Beauty. I often find myself in a range of different states in terms of my faith, whether I am exclaiming with St Paul how unsearchable the Lord’s ways are (Rms 11:33), whispering through tears with the centurion about how unworthy I am before the Lords healing touch (Mt 8:8), shouting out in desperation with the the father of the possessed boy ‘Lord, I believe; help my unbelief!’ (Mk 9:24), receiving the Lord joyfully with Zacchaeus (Lk 19:4) or being astonished by how much the Lord knows me and loves me by saying with the Samaritan woman ‘come and see’ to my friends and family about this man who claims to be the ‘Messiah’ (Jn 4:29). The list could really go on but I am sure you understand the picture - I am a work in progress yet simultaneously a creation of the Lord that was made good and should be pondered as a mystery (Ps 139), so I am just like you!
           </p>
         </>
       )
     },
     {
       id: 'the-patrons',
-      label: 'The Patrons',
+      label: 'Patrons',
       ref: patronsRef,
       content: (
         <>
           <p style={paragraphStyle}>
-            Dedicated under the heavenly patronage of <strong>Our Lady, Seat of Wisdom</strong>, and <strong>Saint Joseph</strong>, protector of the holy home.
+            I have specifically chosen some epic people of the faith within the Church to help guide and protect this blog and I have selected three to give a nod to the Holy Trinity! Firstly I have chosen St Bernadette because I relate to her so much and we’ve been growing in friendship for a while. Bernadette received the apparitions from Our Lady of Lourdes in France, which has now become a site of pilgrimage for healing purposes. To learn more about what the heck I am talking about{' '}
+            <a
+              href="https://www.lourdes-france.org/en/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              press this link
+            </a>
+            . My friend this past year, whilst on pilgrimage in Lourdes, gave me{' '}
+            <a
+              href="https://www.goodreads.com/book/show/21048619-bernadette-speaks"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              a little book on St Bernadette’s sayings
+            </a>
+            , shoutout Cait! I keep it by my bed and I often read it before falling asleep. A lot strikes me in this little book but two sayings from St Bernadette come to mind as I am writing this - ‘early one morning before dawn and her daily commitments commence, Bernadette is insisting a friend to come with her to the Grotto as she just must go say good morning to the Blessed Virgin Mary’, my wonderful friend Alex will understand why I like this saying. And the other one - ‘a priest asked Bernadette if she was scared for the Purssia and her German allies to invade France (this was said around 1870…) and she responded and said “no”. Then the priest said “Bernadette is there anything you are scared of”, and she responded “bad Catholics”, always makes me laugh! St Bernadette, pray for us. The next patron I have chosen is St Josemaria Escriva who was introduced to me by some friends, shoutout to the Ange’s! I got to know him well through a little book my friend gave me whilst on pilgrimage in Rome, shoutout Tyra, and it is also something I keep on my bedside table. St Josemaria’s sense of humour yet straightforwardness is what I love about him. For example… ‘insert funny quote that I right now can’t remember’. St Josemaria Escriva, pray for us. Lastly, and arguably most importantly, I would be honoured to submit this blog to Our Blessed Mother uniquely under a title given to her, Our Lady Mystical Rosa, the Mystical Rose. I discovered this title just recently whilst doing a 30-day consecration to Jesus through Mary (which I never finished…Lord grant me the grace…) and it instantly caught my attention. Such a beautiful title which highlights Mary’s simplicity of spirit, quiet beauty and sturdiness in Gods promises - these being traits we are all called to embody as Mary is the “first disciple of Jesus” (oft stated by Pope Francis). Our Lady Mystical Rosa, pray for us.
           </p>
           <p style={paragraphStyle}>
-            May their intercession bring peace, quiet faith, and spiritual strength to all who visit this dwelling place.
+            Ps, I am aware some people may be reading the above and thinking to themselves, ‘urrrmm don’t you just want to go straight to the money and pray to Jesus???’. Firstly, a totally fair thought and something that is not incorrect, I can most certainly pray directly to Jesus. But by asking our friends to pray for us, who are both in the Church on earth (referred to as the Church Militant) and those who are already in the beatific vision with God in heaven (referred to as the Church Triumphant) we are properly engaging with the economy of salvation that God has gifted us. Devotions to the Saints and to the Blessed Mother are not mandated by the Church, but just imagine a family where the child never speaks to their mother or who doesn’t ever engage with friends, life for this person would be dysfunctional and not a life fully lived. This is just an analogy and I am fully aware that an analogy cannot/will not express the full Truth of what I am saying. Lastly, often in life things are tested and known by their fruits, I can firmly attest to the beauty that has come into my life by engaging with the gifts God has given to His Bride, the Church, the proof is in the pudding!
           </p>
 
           {/* Three Oval Patron Frames */}
@@ -333,3 +345,11 @@ const paragraphStyle = {
   fontWeight: 400,
   textAlign: 'center'
 };
+
+const linkStyle = {
+  color: '#C8524B',
+  textDecoration: 'underline',
+  textUnderlineOffset: '3px',
+  fontWeight: 500
+};
+
