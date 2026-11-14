@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Rose } from 'lucide-react';
 import NavigationHeader from '../components/NavigationHeader';
 
 export default function AboutPage({ onNavigate }) {
@@ -8,33 +9,29 @@ export default function AboutPage({ onNavigate }) {
   const bloggerRef = useRef(null);
   const patronsRef = useRef(null);
 
-  // IntersectionObserver to dynamically highlight active section's centered accent line
+  // Dynamically highlight active section's centered accent line on scroll
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -35% 0px',
-      threshold: 0.2
-    };
+    const updateActiveSection = () => {
+      const sectionElements = [blogRef.current, bloggerRef.current, patronsRef.current].filter(Boolean);
+      const triggerLine = window.innerHeight * 0.45;
 
-    const handleIntersect = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      let currentId = 'the-blog';
+      for (const el of sectionElements) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= triggerLine) {
+          currentId = el.id;
         }
-      });
+      }
+      setActiveSection(currentId);
     };
 
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-    const sectionElements = [blogRef.current, bloggerRef.current, patronsRef.current];
-    sectionElements.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
 
     return () => {
-      sectionElements.forEach((el) => {
-        if (el) observer.unobserve(el);
-      });
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
     };
   }, []);
 
@@ -228,21 +225,9 @@ export default function AboutPage({ onNavigate }) {
       <NavigationHeader currentPage="about" onNavigate={onNavigate} />
 
       {/* Centered Main Content Stream */}
-      <main style={{ maxWidth: '850px', margin: '0 auto', padding: '64px 4vw 40vh', textAlign: 'center' }}>
+      <main style={{ maxWidth: '980px', margin: '0 auto', padding: '64px 32px 40vh', textAlign: 'center' }}>
         {/* Main Hero Page Title — Distinct & Commanding */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: '1.25rem',
-            fontStyle: 'italic',
-            letterSpacing: '0.02em',
-            color: '#C8524B',
-            fontWeight: 500,
-            display: 'block',
-            marginBottom: '12px'
-          }}>
-            So funny the Holy Spirit lead you here :)
-          </span>
           <h1 className="font-serif" style={{
             fontSize: 'clamp(3.4rem, 6.5vw, 4.8rem)',
             fontWeight: 300,
@@ -279,7 +264,7 @@ export default function AboutPage({ onNavigate }) {
                     margin: '16px 0'
                   }}>
                     <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '180px' }} />
-                    <span style={{ color: '#C8524B', fontSize: '0.75rem', opacity: 0.7 }}>❖</span>
+                    <Rose size={18} strokeWidth={1.6} style={{ color: '#C8524B', opacity: 0.85 }} />
                     <div style={{ flex: 1, height: '1px', backgroundColor: '#E6DFD3', maxWidth: '180px' }} />
                   </div>
                 )}
@@ -299,7 +284,7 @@ export default function AboutPage({ onNavigate }) {
                     marginBottom: '24px'
                   }}>
                     <h2 className="font-serif" style={{
-                      fontSize: '2.1rem',
+                      fontSize: '2.3rem',
                       fontWeight: 400,
                       letterSpacing: '0.02em',
                       margin: 0,
@@ -338,7 +323,7 @@ export default function AboutPage({ onNavigate }) {
 
 const paragraphStyle = {
   fontFamily: "'Cormorant Garamond', Georgia, serif",
-  fontSize: '1.35rem',
+  fontSize: '1.52rem',
   color: '#3A3532',
   lineHeight: '1.85',
   marginBottom: '20px',
